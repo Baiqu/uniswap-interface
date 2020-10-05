@@ -3,13 +3,31 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
 
-export const ROUTER_ADDRESS = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D'
+//帐户1 => 0x242dBAF330fd35b3566D24c73353506CF880eDbB
+
+//Goerli NET
+//WETH => 0xc44fC46c24d59663cD2A5B85362dc6dA417caed1
+//Factory => 0x695fD462Dc19558C7Ef81C4A209bD2e455fc9D21 => 0x069D300873BF20780Eb5bB205a76AF88b5a73e2A
+//HEX => 0xc7d39f5eb6b08ac256c730dd2443e6bd45606cdc068f9b6ab2c27b723ff93c72 => 0xde8d0e18e985904441d7a7d37b01df659707659bc61b79788942e3a192c6df70
+//Router02 => 0xbb8DF4FadC16ea45dD6ab8a67600f55b586278B2 => 0x1F9096Be4F5c049Bcd4532C6f0f45f77CfEA0B20
+//TGAX => 0x6f19a204b114CE83e353a53f60BCf1E56fda774d
+
+
+//SGAX => 0xbD6934b8FC3D995ccE9c078189ffb08cBCeE115F
+//MasterCher => 0xE0D1D138661A1547084614C2Abb5cf3d99B4a0B0
+//SushiBar => 0xC904C8d24C8803aD4466d746BDF87a0873F698Dc
+//SushiMaker => 0xd0D53Abd0a173a8768802A111EFCFB7a777F8300
+
+export const ROUTER_ADDRESS = '0x1F9096Be4F5c049Bcd4532C6f0f45f77CfEA0B20'
 
 // a list of tokens by chain
 type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
+//0x79fF677aF16e0e173C55ae571E5d9852A1c8f2Ff GAX
+
+export const GAX = new Token(ChainId.MAINNET, '0x79fF677aF16e0e173C55ae571E5d9852A1c8f2Ff', 8, 'GAX', 'GlobalAssetsChain')
 export const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin')
 export const USDC = new Token(ChainId.MAINNET, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD//C')
 export const USDT = new Token(ChainId.MAINNET, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD')
@@ -28,7 +46,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR]
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR, GAX]
 }
 
 /**
@@ -52,6 +70,8 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT]
 }
+
+      
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
   [ChainId.MAINNET]: [
